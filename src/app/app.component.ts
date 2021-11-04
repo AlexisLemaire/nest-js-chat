@@ -36,11 +36,11 @@ export class AppComponent implements OnInit {
 
   sendMessage() {
     this.message = { author: this.pseudo || "", message: this.form2.value.message };
-    this.http.post("http://nest-js-chat.herokuapp.com/messages", this.message).subscribe( res => console.log(res));
+    this.http.post("https://nest-js-chat.herokuapp.com/messages", this.message).subscribe( res => console.log(res));
     location.reload();
   }
 
   getMessages() {
-    this.http.get("http://nest-js-chat.herokuapp.com/messages").subscribe( (res : any) => this.messages = res);
+    this.http.get("https://nest-js-chat.herokuapp.com/messages").subscribe( (res : any) => this.messages = res);
   }
 }
