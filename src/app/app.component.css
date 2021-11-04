@@ -1,0 +1,7 @@
+.chat div {
+    background-color: lightblue;
+    color: black;
+    height: 55vh;
+    overflow-y: scroll;
+    border: red 4px double;
+}
