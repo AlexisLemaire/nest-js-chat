@@ -8,23 +8,25 @@
 </div>
 
 <div class="bg-dark m-2 p-3 text-light text-center chat">
-  <div class="p-3">
+  <div class="p-4">
     <p *ngFor="let message of messages" class="my-1 mx-5 text-start">
-      <strong>{{ message.author }}:</strong> {{ message.message }}
+      <strong>{{ message.author }}:</strong> {{ message.message }} 
+      <button *ngIf="message.author === pseudo" class="fa fa-trash mx-2" (click)="deleteMessage(message.id)"></button>
     </p>
   </div>
   <br />
 
   <form *ngIf="!pseudo" [formGroup]="form" (submit)="setPseudo()">
     <label for="pseudo">Choisissez un pseudo:</label>
-    <input id="pseudo" type="text" class="form-control" formControlName="pseudo">
+    <input id="pseudo" type="text" class="form-control my-1" formControlName="pseudo">
     <button type="submit" [disabled]="!form.valid">Choisir</button>
   </form>
   
   <form *ngIf="pseudo" [formGroup]="form2" (submit)="sendMessage()">
     <label for="message">Envoyez un message:</label>
-    <input id="message" type="text" class="form-control" formControlName="message">
+    <input id="message" type="text" class="form-control my-1" formControlName="message">
     <button type="submit" [disabled]="!form2.valid">Envoyer</button>
+    <button type="button" (click)="logout()">Se déconnecter</button>
   </form>
 </div>
 
